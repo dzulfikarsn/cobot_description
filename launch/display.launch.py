@@ -10,7 +10,7 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     package = FindPackageShare('cobot_description')
-    urdf_path = PathJoinSubstitution([package, 'urdf', 'cobot.urdf'])
+    urdf_path = PathJoinSubstitution([package, 'urdf', 'cobot.urdf.xacro'])
     rviz_config = PathJoinSubstitution([package, 'rviz', 'urdf.rviz'])
 
     # declare argument
