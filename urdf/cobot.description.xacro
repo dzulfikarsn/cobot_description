@@ -215,8 +215,7 @@
         </geometry>
       </collision>
     </link>
-    
-    <!-- link5 -->
+
     <link name="link5">
       <inertial>
         <origin
@@ -258,24 +257,7 @@
       </collision>
     </link>
 
-    <!--
-    
     <link name="in_right_grip">
-      <inertial>
-        <origin
-          xyz="0.014644586508523127 -0.00432633092858755 0.0006351808581316672"
-          rpy="-0.17453 -1.5708 0" />
-        <mass
-          value="0.020498186106830463" />
-        <inertia
-          ixx="3e-06"
-          iyy="3e-06"
-          izz="1e-06"
-          ixy="0.0"
-          iyz="-1e-06"
-          ixz="-0.0"/>
-      </inertial>
-    
       <visual>
         <origin
           xyz="0 0 0"
@@ -302,24 +284,9 @@
     </link>
     
     <link name="in_left_grip">
-      <inertial>
-        <origin
-          xyz="-0.0007181665729370061 -0.004855388988816466 0.014473452058062775"
-          rpy="0 0 0" />
-        <mass
-          value="0.020498186106830463" />
-        <inertia
-          ixx="3e-06"
-          iyy="3e-06"
-          izz="1e-06"
-          ixy="0.0"
-          iyz="1e-06"
-          ixz="0.0" />
-      </inertial>
-    
       <visual>
         <origin
-          xyz="-0.015511 -0.01074 -0.428335"
+          xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
@@ -332,7 +299,7 @@
     
       <collision>
         <origin
-          xyz="-0.015511 -0.01074 -0.428335"
+          xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
@@ -343,24 +310,9 @@
     </link>
     
     <link name="out_right_grip">
-      <inertial>
-        <origin
-          xyz="0.001718746609355823 0.0060517958020296775 0.009753075365702468"
-          rpy="0 0 0" />
-        <mass 
-          value="0.03206774948119643" />
-        <inertia
-          ixx="7e-06"
-          iyy="5e-06"
-          izz="2e-06"
-          ixy="0.0"
-          iyz="-2e-06"
-          ixz="1e-06" />
-      </inertial>
-    
       <visual>
         <origin
-          xyz="-0.016434 -0.027552 -0.407598"
+          xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
@@ -373,7 +325,7 @@
     
       <collision>
         <origin
-          xyz="-0.016434 -0.027552 -0.407598"
+          xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
@@ -384,24 +336,9 @@
     </link>
     
     <link name="out_left_grip">
-      <inertial>
-        <origin
-          xyz="0.0016870125804937762 -0.006851070724163324 0.011071981124217367"
-          rpy="0 0 0" />
-        <mass
-          value="0.02733538421745774" />
-        <inertia
-          ixx="6e-06"
-          iyy="5e-06"
-          izz="2e-06"
-          ixy="-0.0"
-          iyz="2e-06"
-          ixz="1e-06" />
-      </inertial>
-    
       <visual>
         <origin
-          xyz="-0.016251 -0.00746 -0.407484"
+          xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
@@ -414,36 +351,47 @@
     
       <collision>
         <origin
-          xyz="-0.016251 -0.00746 -0.407484"
+          xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
             filename="package://cobot_description/meshes/out_left_grip.stl"
+            scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="right_gripper">
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 -0.2618" />
+        <geometry>
+          <mesh
+            filename="package://cobot_description/meshes/right_gripper.stl"
+            scale="0.001 0.001 0.001" />
+        </geometry>
+        <material
+          name="silver" />
+      </visual>
+    
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://cobot_description/meshes/right_gripper.stl"
             scale="0.001 0.001 0.001" />
         </geometry>
       </collision>
     </link>
     
     <link name="left_gripper">
-      <inertial>
-        <origin
-          xyz="-0.0007973268186895303 0.006294598773784492 0.029093411847490813"
-          rpy="0 0 0" />
-        <mass
-          value="0.0574367398539114" />
-        <inertia
-          ixx="2e-05"
-          iyy="1.9e-05"
-          izz="3e-06"
-          ixy="0.0"
-          iyz="-4e-06"
-          ixz="0.0" />
-      </inertial>
-    
       <visual>
         <origin
-          xyz="-0.015316 0.007935 -0.438489"
-          rpy="0 0 0" />
+          xyz="0 0 0"
+          rpy="0 0 0.2618" />
         <geometry>
           <mesh
             filename="package://cobot_description/meshes/left_gripper.stl"
@@ -455,7 +403,7 @@
     
       <collision>
         <origin
-          xyz="-0.015316 0.007935 -0.438489"
+          xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
@@ -465,50 +413,7 @@
       </collision>
     </link>
     
-    <link name="right_gripper">
-      <inertial>
-        <origin
-          xyz="-0.0006522798682768623 -0.006645060979379405 0.02916261432592454"
-          rpy="0 0 0" />
-        <mass
-          value="0.05715084388035935" />
-        <inertia
-          ixx="1.9e-05"
-          iyy="1.9e-05"
-          izz="3e-06"
-          ixy="-0.0"
-          iyz="4e-06"
-          ixz="0.0" />
-      </inertial>
-    
-      <visual>
-        <origin
-          xyz="-0.015503 -0.042612 -0.438775"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/right_gripper.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-        <material
-          name="silver" />
-      </visual>
-    
-      <collision>
-        <origin
-          xyz="-0.015503 -0.042612 -0.438775"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/right_gripper.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-      </collision>
-    </link>
-    
-    -->
-    
-    <joint name="joint_base_link_to_link1" type="continuous">
+    <joint name="joint_base_link_to_link1" type="revolute">
       <origin
         xyz="0 0 0.05675"
         rpy="0 0 0" />
@@ -518,9 +423,11 @@
         link="link1" />
       <axis
         xyz="0 0 1" />
+      <limit
+        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
     </joint>
     
-    <joint name="joint_link1_to_link2" type="continuous">
+    <joint name="joint_link1_to_link2" type="revolute">
       <origin
         xyz="0.01392 0 0.070276"
         rpy="1.5708 -1.5708 0" />
@@ -530,9 +437,11 @@
         link="link2" />
       <axis
         xyz="0 0 1" />
+      <limit
+        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
     </joint>
     
-    <joint name="joint_link2_to_link3" type="continuous">
+    <joint name="joint_link2_to_link3" type="revolute">
       <origin
         xyz="0.12 0 0"
         rpy="0 0 0"/>
@@ -542,9 +451,11 @@
         link="link3"/>
       <axis
         xyz="0 0 -1"/>
+      <limit
+        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
     </joint>
     
-    <joint name="joint_link3_to_link4" type="continuous">
+    <joint name="joint_link3_to_link4" type="revolute">
       <origin
         xyz="0.08975 0 -0.010544"
         rpy="-1.5708 0 -1.5708" />
@@ -552,10 +463,13 @@
         link="link3" />
       <child
         link="link4" />
-      <axis xyz="0 0 1" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
     </joint>
     
-    <joint name="joint_link4_to_link5" type="continuous">
+    <joint name="joint_link4_to_link5" type="revolute">
       <origin
         xyz="0 -0.0142 0.0325"
         rpy="1.5708 -1.5708 0" />
@@ -565,56 +479,104 @@
         link="link5" />
       <axis
         xyz="0 0 1" />
+      <limit
+        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+    </joint>
+    
+    <!-- joint_link5_to_out_left_grip -->
+    <joint name="gripper" type="revolute">
+      <origin
+        xyz="0.038208 0.00536837 -0.017277"
+        rpy="-1.5708 0.2618 0"/>
+      <parent
+        link="link5"/>
+      <child
+        link="out_left_grip"/>
+      <axis
+         xyz="0 0 -1"/>
+      <limit
+        effort="1000.0" lower="-0.500" upper="0.250" velocity="0.5" />
     </joint>
 
-    <!--
+    <joint name="joint_link5_to_out_right_grip" type="revolute">
+      <origin
+        xyz="0.038322 0.00536837 0.002815"
+        rpy="-1.5708 -0.2618 0"/>
+      <parent
+        link="link5"/>
+      <child
+        link="out_right_grip"/>
+      <axis
+        xyz="0 0 1"/>
+      <mimic
+        joint="gripper" multiplier="1.0" offset="0" />
+      <limit
+        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+    </joint>
     
-    <joint name="joint_link5_to_in_right_grip" type="continuous">
+    <joint name="joint_link5_to_in_left_grip" type="revolute">
+      <origin
+        xyz="0.059059 -0.002086 -0.013997"
+        rpy="-1.5708 0.34906 0" />
+      <parent
+        link="link5"/>
+      <child
+        link="in_left_grip"/>
+      <axis
+        xyz="0 0 -1"/>
+      <mimic
+        joint="gripper" multiplier="1.2" offset="0" />
+      <limit
+        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+    </joint>
+    
+    <joint name="joint_link5_to_in_right_grip" type="revolute">
       <origin
         xyz="0.059134 -0.002086 -0.000687"
-        rpy="-1.5708 -0.17453 0" />
+        rpy="-1.5708 -0.34906 0" />
       <parent
         link="link5" />
       <child
         link="in_right_grip" />
-      <axis xyz="0 0 1" />
+      <axis
+        xyz="0 0 1" />
+      <mimic
+        joint="gripper" multiplier="1.2" offset="0" />
+      <limit
+        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
     </joint>
     
-    <joint name="joint_link5_to_in_left_grip" type="continuous">
-      <origin xyz="0.001964 -0.013997 0.059059" rpy="0 0 0"/>
-      <parent link="link5"/>
-      <child link="in_left_grip"/>
-      <axis xyz="-0.999947 0.009166 -0.004789"/>
+    <joint name="joint_out_left_grip_to_left_gripper" type="revolute">
+      <origin
+        xyz="0.0339442 0.00682491 -0.0042874"
+        rpy="0 0 -0.5236" />
+      <parent
+        link="out_left_grip"/>
+      <child
+        link="left_gripper"/>
+      <axis
+        xyz="0 0 1"/>
+      <mimic
+        joint="gripper" multiplier="1.0" offset="0" />
+      <limit
+        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
     </joint>
-    
-    <joint name="joint_link5_to_out_right_grip" type="continuous">
-      <origin xyz="0.002887 0.002815 0.038322" rpy="0 0 0"/>
-      <parent link="link5"/>
-      <child link="out_right_grip"/>
-      <axis xyz="0.999947 -0.009166 0.004789"/>
+
+    <joint name="joint_out_right_grip_to_right_gripper" type="revolute">
+      <origin
+        xyz="0.0339442 -0.00682491 -0.0030837"
+        rpy="0 0 0.5236"/>
+      <parent
+        link="out_right_grip"/>
+      <child
+        link="right_gripper"/>
+      <axis
+        xyz="0 0 -1"/>
+      <mimic
+        joint="gripper" multiplier="1.0" offset="0" />
+      <limit
+        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
     </joint>
-    
-    <joint name="joint_link5_to_out_left_grip" type="continuous">
-      <origin xyz="0.002704 -0.017277 0.038208" rpy="0 0 0"/>
-      <parent link="link5"/>
-      <child link="out_left_grip"/>
-      <axis xyz="0.999947 -0.009166 0.004789"/>
-    </joint>
-    
-    <joint name="joint_out_left_grip_to_left_gripper" type="continuous">
-      <origin xyz="-0.000935 -0.015395 0.031005" rpy="0 0 0"/>
-      <parent link="out_left_grip"/>
-      <child link="left_gripper"/>
-      <axis xyz="-0.999947 0.009166 -0.004789"/>
-    </joint>
-    
-    <joint name="joint_out_right_grip_to_right_gripper" type="continuous">
-      <origin xyz="-0.000931 0.01506 0.031177" rpy="0 0 0"/>
-      <parent link="out_right_grip"/>
-      <child link="right_gripper"/>
-      <axis xyz="-0.999947 0.009166 -0.004789"/>
-    </joint>
-    
-    -->
+
   </xacro:macro>
 </robot>

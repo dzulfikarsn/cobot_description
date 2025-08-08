@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="https://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="cobot_ros2_control" params="name">
+  <xacro:macro name="cobot_ros2_control">
 
     <ros2_control name="${name}" type="system">
-
-      <!-- hardware interface -->
       <hardware>
-        <plugin>cobot_hardware/CobotHardware</plugin>
-        <param name="port_name">/dev/esp32</param>  <!-- use udev rules! -->
-        <!-- <param name="baud_rate">115200</param> --> 
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
       </hardware>
 
-      <!-- joint -->
       <joint name="joint_0">
         <param name="id">0</param>
         <command_interface name="position" />
@@ -45,7 +40,6 @@
         <command_interface name="position" />
         <state_interface name="position" />
       </joint> -->
-
     </ros2_control>
 
   </xacro:macro>
