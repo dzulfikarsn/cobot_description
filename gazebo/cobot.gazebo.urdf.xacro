@@ -2,8 +2,8 @@
 <robot name="cobot" xmlns:xacro="https://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find cobot_gazebo)/urdf/cobot.description.xacro" />
-  <xacro:include filename="$(find cobot_gazebo)/urdf/cobot.ros2_control.xacro" />
-  <xacro:include filename="$(find cobot_gazebo)/urdf/cobot.gazebo.xacro" />
+  <xacro:include filename="$(find cobot_gazebo)/gazebo/cobot.ros2_control.xacro" />
+  <xacro:include filename="$(find cobot_gazebo)/gazebo/cobot.gazebo.xacro" />
 
   <xacro:cobot_description />
   <xacro:cobot_ros2_control />

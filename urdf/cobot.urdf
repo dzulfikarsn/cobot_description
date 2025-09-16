@@ -375,7 +375,7 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 0 -0.2618" />
       <geometry>
         <mesh
           filename="package://cobot_description/meshes/right_gripper.stl"
@@ -401,7 +401,7 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 0 0.2618" />
       <geometry>
         <mesh
           filename="package://cobot_description/meshes/left_gripper.stl"
