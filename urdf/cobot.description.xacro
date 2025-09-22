@@ -489,27 +489,27 @@
     <joint name="gripper" type="revolute">
       <origin
         xyz="0.038208 0.00536837 -0.017277"
-        rpy="-1.5708 0.2618 0"/>
+        rpy="-1.5708 1.047 0"/>
       <parent
         link="link5"/>
       <child
         link="out_left_grip"/>
       <axis
-         xyz="0 0 -1"/>
+         xyz="0 0 1"/>
       <limit
-        effort="1000.0" lower="-0.500" upper="0.250" velocity="0.5" />
+        effort="1000.0" lower="-1.047" upper="0.0" velocity="0.5" />
     </joint>
 
     <joint name="joint_link5_to_out_right_grip" type="revolute">
       <origin
         xyz="0.038322 0.00536837 0.002815"
-        rpy="-1.5708 -0.2618 0"/>
+        rpy="-1.5708 -1.047 0"/>
       <parent
         link="link5"/>
       <child
         link="out_right_grip"/>
       <axis
-        xyz="0 0 1"/>
+        xyz="0 0 -1"/>
       <mimic
         joint="gripper" multiplier="1.0" offset="0" />
       <limit
@@ -519,13 +519,13 @@
     <joint name="joint_link5_to_in_left_grip" type="revolute">
       <origin
         xyz="0.059059 -0.002086 -0.013997"
-        rpy="-1.5708 0.34906 0" />
+        rpy="-1.5708 1.3090 0" />
       <parent
         link="link5"/>
       <child
         link="in_left_grip"/>
       <axis
-        xyz="0 0 -1"/>
+        xyz="0 0 1"/>
       <mimic
         joint="gripper" multiplier="1.2" offset="0" />
       <limit
@@ -535,13 +535,13 @@
     <joint name="joint_link5_to_in_right_grip" type="revolute">
       <origin
         xyz="0.059134 -0.002086 -0.000687"
-        rpy="-1.5708 -0.34906 0" />
+        rpy="-1.5708 -1.3090 0" />
       <parent
         link="link5" />
       <child
         link="in_right_grip" />
       <axis
-        xyz="0 0 1" />
+        xyz="0 0 -1" />
       <mimic
         joint="gripper" multiplier="1.2" offset="0" />
       <limit
@@ -551,13 +551,13 @@
     <joint name="joint_out_left_grip_to_left_gripper" type="revolute">
       <origin
         xyz="0.0339442 0.00682491 -0.0042874"
-        rpy="0 0 -0.5236" />
+        rpy="0 0 -1.309" />
       <parent
         link="out_left_grip"/>
       <child
         link="left_gripper"/>
       <axis
-        xyz="0 0 1"/>
+        xyz="0 0 -1"/>
       <mimic
         joint="gripper" multiplier="1.0" offset="0" />
       <limit
@@ -567,13 +567,13 @@
     <joint name="joint_out_right_grip_to_right_gripper" type="revolute">
       <origin
         xyz="0.0339442 -0.00682491 -0.0030837"
-        rpy="0 0 0.5236"/>
+        rpy="0 0 1.309"/>
       <parent
         link="out_right_grip"/>
       <child
         link="right_gripper"/>
       <axis
-        xyz="0 0 -1"/>
+        xyz="0 0 1"/>
       <mimic
         joint="gripper" multiplier="1.0" offset="0" />
       <limit
