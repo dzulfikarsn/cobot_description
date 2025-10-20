@@ -415,7 +415,7 @@
 
     <!-- joint -->
     
-    <joint name="joint_base_link_to_link1" type="revolute">
+    <joint name="joint_0" type="revolute">
       <origin
         xyz="0 0 0.05675"
         rpy="0 0 0" />
@@ -426,10 +426,10 @@
       <axis
         xyz="0 0 1" />
       <limit
-        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
     </joint>
     
-    <joint name="joint_link1_to_link2" type="revolute">
+    <joint name="joint_1" type="revolute">
       <origin
         xyz="0.01392 0 0.070276"
         rpy="1.5708 -1.5708 0" />
@@ -440,10 +440,10 @@
       <axis
         xyz="0 0 1" />
       <limit
-        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
     </joint>
     
-    <joint name="joint_link2_to_link3" type="revolute">
+    <joint name="joint_2" type="revolute">
       <origin
         xyz="0.12 0 0"
         rpy="0 0 0"/>
@@ -454,10 +454,10 @@
       <axis
         xyz="0 0 -1"/>
       <limit
-        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
     </joint>
     
-    <joint name="joint_link3_to_link4" type="revolute">
+    <joint name="joint_3" type="revolute">
       <origin
         xyz="0.08975 0 -0.010544"
         rpy="-1.5708 0 -1.5708" />
@@ -468,10 +468,10 @@
       <axis
         xyz="0 0 1" />
       <limit
-        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
     </joint>
     
-    <joint name="joint_link4_to_link5" type="revolute">
+    <joint name="joint_4" type="revolute">
       <origin
         xyz="0 -0.0142 0.0325"
         rpy="1.5708 -1.5708 0" />
@@ -482,7 +482,7 @@
       <axis
         xyz="0 0 1" />
       <limit
-        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
     </joint>
     
     <!-- joint_link5_to_out_left_grip -->
@@ -513,7 +513,7 @@
       <mimic
         joint="gripper" multiplier="1.0" offset="0" />
       <limit
-        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
     </joint>
     
     <joint name="joint_link5_to_in_left_grip" type="revolute">
@@ -529,7 +529,7 @@
       <mimic
         joint="gripper" multiplier="1.2" offset="0" />
       <limit
-        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
     </joint>
     
     <joint name="joint_link5_to_in_right_grip" type="revolute">
@@ -545,7 +545,7 @@
       <mimic
         joint="gripper" multiplier="1.2" offset="0" />
       <limit
-        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
     </joint>
     
     <joint name="joint_out_left_grip_to_left_gripper" type="revolute">
@@ -561,7 +561,7 @@
       <mimic
         joint="gripper" multiplier="1.0" offset="0" />
       <limit
-        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
     </joint>
 
     <joint name="joint_out_right_grip_to_right_gripper" type="revolute">
@@ -577,7 +577,7 @@
       <mimic
         joint="gripper" multiplier="1.0" offset="0" />
       <limit
-        effort="1000.0" lower="-1.5708" upper="1.5708" velocity="0.5" />
+        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
     </joint>
 
     <!-- end effector -->
