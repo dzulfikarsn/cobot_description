@@ -5,6 +5,6 @@
   <xacro:include filename="$(find cobot_description)/urdf/cobot.ros2_control.xacro" />
 
   <xacro:cobot_description />
-  <xacro:cobot_ros2_control name="cobot_ros2_control" />
+  <xacro:cobot_ros2_control />
 
 </robot>

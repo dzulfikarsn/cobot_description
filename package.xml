@@ -3,13 +3,12 @@
 <package format="3">
 <name>cobot_description</name>
   <version>0.0.0</version>
-<description>The cobot_description package</description>
-  <maintainer email="dzulfikarsaifuddin@gmail.com">Dzulfikar Saifuddin</maintainer>
-  <license>TODO: License declaration</license>
+  <description>The cobot_description package</description>
+  <maintainer email="dzulfikarsaifuddin@mail.ugm.ac.id">Dzulfikar Saifuddin</maintainer>
+  <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>joint_state_publisher</depend>
   <depend>joint_state_publisher_gui</depend>
   <depend>robot_state_publisher</depend>
   <depend>rviz2</depend>

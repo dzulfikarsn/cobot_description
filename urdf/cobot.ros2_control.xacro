@@ -3,18 +3,12 @@
 
   <xacro:arg name="use_mock_components" default="false" />
 
-  <xacro:macro name="cobot_ros2_control" params="name">
+  <xacro:macro name="cobot_ros2_control">
 
-    <ros2_control name="${name}" type="system">
+    <ros2_control name="cobot_ros2_control" type="system">
       <xacro:if value="$(arg use_mock_components)">
         <hardware>
           <plugin>mock_components/GenericSystem</plugin>
-          <param name="calculate_dynamics">false</param>
-          <param name="custom_interface_with_following_offset"></param>
-          <param name="disable_commands">false</param>
-          <param name="mock_gpio_commands">false</param>
-          <param name="mock_sensor_commands">false</param>
-          <param name="position_state_following_offset">0.0</param>
         </hardware>
       </xacro:if>
 
@@ -22,7 +16,7 @@
         <hardware>
           <plugin>cobot_hardware/CobotHardware</plugin>
           <param name="port_name">/dev/esp32</param>  <!-- use udev rules! -->
-          <!-- <param name="baud_rate">115200</param> --> 
+          <param name="baud_rate">115200</param> 
         </hardware>
       </xacro:unless>
 
