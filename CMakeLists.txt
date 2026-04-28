@@ -4,7 +4,7 @@ project(cobot_description)
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY config launch meshes rviz
+  DIRECTORY config launch meshes config
   DESTINATION share/${PROJECT_NAME}
 )
 
