@@ -1,59 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot xmlns:xacro="https://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:arg name="use_mock_components" default="false" />
-
-  <xacro:macro name="cobot_ros2_control">
-
+  <xacro:macro name="cobot_ros2_control" params="use_real_hardware">
     <ros2_control name="cobot_ros2_control" type="system">
-      <xacro:if value="$(arg use_mock_components)">
+      <xacro:if value="${use_real_hardware}">
         <hardware>
-          <plugin>mock_components/GenericSystem</plugin>
+          <plugin>cobot_hardware/CobotHardware</plugin>
+          <param name="port_name">/dev/esp32</param>
+          <param name="baud_rate">115200</param> 
         </hardware>
       </xacro:if>
 
-      <xacro:unless value="$(arg use_mock_components)">
+      <xacro:unless value="${use_real_hardware}">
         <hardware>
-          <plugin>cobot_hardware/CobotHardware</plugin>
-          <param name="port_name">/dev/esp32</param>  <!-- use udev rules! -->
-          <param name="baud_rate">115200</param> 
+          <plugin>mock_components/GenericSystem</plugin>
         </hardware>
       </xacro:unless>
 
       <!-- joint -->
       <joint name="joint_0">
-        <param name="id">0</param>
         <command_interface name="position" />
         <state_interface name="position" />
       </joint>
       <joint name="joint_1">
-        <param name="id">1</param>
         <command_interface name="position" />
         <state_interface name="position" />
       </joint>
       <joint name="joint_2">
-        <param name="id">2</param>
         <command_interface name="position" />
         <state_interface name="position" />
       </joint>
       <joint name="joint_3">
-        <param name="id">3</param>
         <command_interface name="position" />
         <state_interface name="position" />
       </joint>
       <joint name="joint_4">
-        <param name="id">4</param>
         <command_interface name="position" />
         <state_interface name="position" />
       </joint>
 
-      <joint name="gripper">
-        <param name="id">5</param>
+      <joint name="joint_gripper">
         <command_interface name="position" />
         <state_interface name="position" />
       </joint>
     </ros2_control>
-
   </xacro:macro>
 
 </robot>

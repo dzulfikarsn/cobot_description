@@ -1,18 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
-<robot xmlns:xacro="https://www.ros.org/wiki/xacro">
+<?xml version="1.0" encoding="UTF-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="cobot_description">
+  <xacro:include filename="$(find cobot_description)/urdf/utils/colors.xacro" />
+  <xacro:include filename="$(find cobot_description)/urdf/utils/inertials.xacro" />
 
-    <material name="silver">
-      <color rgba="0.7 0.7 0.7 1.0"/>
-    </material>
-    
-    <!-- base_link -->
-    <link name="base_link">
+  <!-- simulation:=true membuang tag <mimic>, sehingga joint mimic dikendalikan
+       langsung oleh controller (gz_ros2_control tidak mendukung mimic dari URDF) -->
+  <xacro:macro name="cobot_description" params="simulation:=false">
+    <link name="world"/>
+    <joint name="world_to_base_link" type="fixed">
+      <parent link="world"/>
+      <child link="base_link"/>
+    </joint>
+
+    <link name="base_link" />
+    <joint name="base_link_to_base_bottom" type="fixed">
+      <parent link="base_link"/>
+      <child link="base_bottom"/>
+    </joint>
+
+    <!-- base_bottom -->
+    <link name="base_bottom">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cobot_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="silver" />
+      </visual>
+
       <inertial>
-        <origin
-          xyz="0.0010569805350138673 0.0007297344522584362 0.01829217339489528"
-          rpy="0 0 0" />
+        <origin xyz="0.0010569805350138673 0.0007297344522584362 0.01829217339489528" rpy="0 0 0" />
         <mass
           value="0.9757252027596308" />
         <inertia
@@ -23,40 +41,21 @@
           iyz="-7e-06"
           ixz="-0.0" />
       </inertial>
-    
-      <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/base_link.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-        <material
-          name="silver" />
-      </visual>
-    
-      <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/base_link.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-      </collision>
     </link>
     
     <!-- link1 -->
     <link name="link1">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cobot_description/meshes/link1.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="silver" />
+      </visual>
+
       <inertial>
-        <origin
-          xyz="-0.003818008823720768 0.008441513827613 0.03204494242786362"
-          rpy="0 0 0" />
-        <mass
-          value="0.8487763548317978" />
+        <origin xyz="-0.003818008823720768 0.008441513827613 0.03204494242786362" rpy="0 0 0" />
+        <mass value="0.85" />
         <inertia
           ixx="0.000968"
           iyy="0.001205"
@@ -65,40 +64,21 @@
           iyz="-0.000103"
           ixz="-7.7e-05" />
       </inertial>
-      
-      <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/link1.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-        <material
-          name="silver" />
-      </visual>
-    
-      <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/link1.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-      </collision>
     </link>
     
     <!-- link2 -->
     <link name="link2">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cobot_description/meshes/link2.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="silver" />
+      </visual>
+
       <inertial>
-        <origin
-          xyz="0.06020229512696279 -0.002214238815772403 0.011894670876730499"
-          rpy="0 0 0" />
-        <mass
-          value="0.6612420873424198" />
+        <origin xyz="0.06020229512696279 -0.002214238815772403 0.011894670876730499" rpy="0 0 0" />
+        <mass value="0.65" />
         <inertia
           ixx="0.000127"
           iyy="0.001921"
@@ -107,40 +87,21 @@
           iyz="2e-06"
           ixz="1e-06" />
       </inertial>
-    
-      <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/link2.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-        <material
-          name="silver" />
-      </visual>
-    
-      <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/link2.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-      </collision>
     </link>
     
     <!-- link3 -->
     <link name="link3">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cobot_description/meshes/link3.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="silver" />
+      </visual>
+
       <inertial>
-        <origin
-          xyz="0.0409322245782118 -0.0006937756215695916 -0.008652145666434768"
-          rpy="0 0 0" />
-        <mass
-          value="0.4123818105357045" />
+        <origin xyz="0.0409322245782118 -0.0006937756215695916 -0.008652145666434768" rpy="0 0 0" />
+        <mass value="0.4" />
         <inertia
           ixx="8.7e-05"
           iyy="0.000447"
@@ -149,39 +110,21 @@
           iyz="-2e-06"
           ixz="-5e-06" />
       </inertial>
-    
-      <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/link3.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-        <material name="silver" />
-      </visual>
-    
-      <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/link3.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-      </collision>
     </link>
     
     <!-- link4 -->
     <link name="link4">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://cobot_description/meshes/link4.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="silver" />
+      </visual>
+
       <inertial>
-        <origin
-          xyz="0.0002076619932401616 -0.005563955264345595 0.02139744743586941"
-          rpy="0 0 0" />
-        <mass
-          value="0.1688382109185934" />
+        <origin xyz="0.0002076619932401616 -0.005563955264345595 0.02139744743586941" rpy="0 0 0" />
+        <mass value="0.17" />
         <inertia
           ixx="4.4e-05"
           iyy="5.8e-05"
@@ -190,39 +133,12 @@
           iyz="4e-06"
           ixz="-0.0" />
       </inertial>
-    
-      <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/link4.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-        <material
-          name="silver" />
-      </visual>
-    
-      <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/link4.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-      </collision>
     </link>
 
     <link name="link5">
       <inertial>
-        <origin
-          xyz="0.023252917458090605 0.0009180511930666074 -0.0026770648599710144"
-          rpy="1.5708 0 1.5708" />
-        <mass
-          value="0.17229950863980814" />
+        <origin xyz="0.023252917458090605 0.0009180511930666074 -0.0026770648599710144" rpy="1.5708 0 1.5708" />
+        <mass value="0.17" />
         <inertia
           ixx="9.6e-05"
           iyy="8.8e-05"
@@ -233,364 +149,321 @@
       </inertial>
     
       <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/link5.stl"
-            scale="0.001 0.001 0.001" />
+          <mesh filename="package://cobot_description/meshes/link5.stl" scale="0.001 0.001 0.001" />
         </geometry>
-        <material
-          name="silver"/>
+        <material name="silver"/>
       </visual>
-    
-      <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/link5.stl"
-            scale="0.001 0.001 0.001" />
-        </geometry>
-      </collision>
     </link>
 
     <link name="in_right_grip">
       <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/in_right_grip.stl"
-            scale="0.001 0.001 0.001" />
+          <mesh filename="package://cobot_description/meshes/in_right_grip.stl" scale="0.001 0.001 0.001" />
         </geometry>
-        <material
-          name="silver" />
+        <material name="silver" />
       </visual>
-    
+
       <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
+        <origin xyz="0.0149143 0 0.00349 " rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/in_right_grip.stl"
-            scale="0.001 0.001 0.001" />
+          <box size="0.04 0.01 0.0168"/>
         </geometry>
       </collision>
+
+      <xacro:box_inertial
+        mass="0.005"
+        size="0.04 0.01 0.0168"
+        xyz="0.0149143 0 0.00349"
+        rpy="0 0 0" />
     </link>
     
     <link name="in_left_grip">
       <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/in_left_grip.stl"
-            scale="0.001 0.001 0.001" />
+          <mesh filename="package://cobot_description/meshes/in_left_grip.stl" scale="0.001 0.001 0.001" />
         </geometry>
-        <material
-          name="silver" />
+        <material name="silver" />
       </visual>
-    
+
       <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
+        <origin xyz="0.0149143 0 0.00349 " rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/in_left_grip.stl"
-            scale="0.001 0.001 0.001" />
+          <box size="0.04 0.01 0.0168"/>
         </geometry>
       </collision>
+
+      <xacro:box_inertial
+        mass="0.005"
+        size="0.04 0.01 0.0168"
+        xyz="0.0149143 0 0.00349"
+        rpy="0 0 0" />
     </link>
     
     <link name="out_right_grip">
       <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/out_right_grip.stl"
-            scale="0.001 0.001 0.001" />
+          <mesh filename="package://cobot_description/meshes/out_right_grip.stl" scale="0.001 0.001 0.001" />
         </geometry>
-        <material
-          name="silver" />
+        <material name="silver" />
       </visual>
-    
+
       <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
+        <origin xyz="0.0218 -0.0065 0" rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/out_right_grip.stl"
-            scale="0.001 0.001 0.001" />
+          <box size="0.035 0.0055 0.007"/>
         </geometry>
       </collision>
+
+      <xacro:box_inertial
+        mass="0.005"
+        size="0.035 0.0055 0.007"
+        xyz="0.0218 -0.0065 0"
+        rpy="0 0 0" />
     </link>
     
     <link name="out_left_grip">
       <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/out_left_grip.stl"
-            scale="0.001 0.001 0.001" />
+          <mesh filename="package://cobot_description/meshes/out_left_grip.stl" scale="0.001 0.001 0.001" />
         </geometry>
-        <material
-          name="silver" />
+        <material name="silver" />
       </visual>
-    
+
       <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
+        <origin xyz="0.0218 0.0065 0" rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/out_left_grip.stl"
-            scale="0.001 0.001 0.001" />
+          <box size="0.035 0.0055 0.007"/>
         </geometry>
       </collision>
+
+      <xacro:box_inertial
+        mass="0.005"
+        size="0.035 0.0055 0.007"
+        xyz="0.0218 0.0065 0"
+        rpy="0 0 0" />
     </link>
 
     <link name="right_gripper">
       <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 -0.2618" />
+        <origin xyz="0 0 0" rpy="0 0 -0.2618" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/right_gripper.stl"
-            scale="0.001 0.001 0.001" />
+          <mesh filename="package://cobot_description/meshes/right_gripper.stl" scale="0.001 0.001 0.001" />
         </geometry>
-        <material
-          name="silver" />
+        <material name="silver" />
       </visual>
-    
+
       <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
+        <origin xyz="0.04165 0 0" rpy="0 0 -0.2618" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/right_gripper.stl"
-            scale="0.001 0.001 0.001" />
+          <box size="0.03546 0.0082 0.01684"/>
         </geometry>
       </collision>
+
+      <xacro:box_inertial
+        mass="0.01"
+        size="0.03546 0.0082 0.01684"
+        xyz="0.04165 0 0"
+        rpy="0 0 -0.2618" />
     </link>
     
     <link name="left_gripper">
       <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0.2618" />
+        <origin xyz="0 0 0" rpy="0 0 0.2618" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/left_gripper.stl"
-            scale="0.001 0.001 0.001" />
+          <mesh filename="package://cobot_description/meshes/left_gripper.stl" scale="0.001 0.001 0.001" />
         </geometry>
-        <material
-          name="silver" />
+        <material name="silver" />
       </visual>
-    
+
       <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
+        <origin xyz="0.04165 0 0" rpy="0 0 0.2618" />
         <geometry>
-          <mesh
-            filename="package://cobot_description/meshes/left_gripper.stl"
-            scale="0.001 0.001 0.001" />
+          <box size="0.03546 0.0082 0.01684"/>
         </geometry>
       </collision>
+
+      <xacro:box_inertial
+        mass="0.01"
+        size="0.03546 0.0082 0.01684"
+        xyz="0.04165 0 0"
+        rpy="0 0 0.2618" />
     </link>
 
     <!-- joint -->
     
     <joint name="joint_0" type="revolute">
-      <origin
-        xyz="0 0 0.05675"
-        rpy="0 0 0" />
-      <parent
-        link="base_link" />
-      <child
-        link="link1" />
-      <axis
-        xyz="0 0 1" />
+      <origin xyz="0 0 0.05675" rpy="0 0 0" />
+      <parent link="base_bottom" />
+      <child link="link1" />
+      <axis xyz="0 0 1" />
       <limit
-        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
+        effort="1000.0"
+        lower="-${pi/2}"
+        upper="${pi/2}"
+        velocity="0.5" />
     </joint>
     
     <joint name="joint_1" type="revolute">
-      <origin
-        xyz="0.01392 0 0.070276"
-        rpy="1.5708 -1.5708 0" />
-      <parent
-        link="link1" />
-      <child
-        link="link2" />
-      <axis
-        xyz="0 0 1" />
+      <origin xyz="0.01392 0 0.070276" rpy="1.5708 -1.5708 0" />
+      <parent link="link1" />
+      <child link="link2" />
+      <axis xyz="0 0 1" />
       <limit
-        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
+        effort="1000.0"
+        lower="-${pi/2}"
+        upper="${pi/2}"
+        velocity="0.5" />
     </joint>
     
     <joint name="joint_2" type="revolute">
-      <origin
-        xyz="0.12 0 0"
-        rpy="0 0 0"/>
-      <parent
-        link="link2"/>
-      <child
-        link="link3"/>
-      <axis
-        xyz="0 0 -1"/>
+      <origin xyz="0.12 0 0" rpy="0 0 0" />
+      <parent link="link2" />
+      <child link="link3" />
+      <axis xyz="0 0 -1"/>
       <limit
-        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
+        effort="1000.0"
+        lower="-${pi/2}"
+        upper="${pi/2}"
+        velocity="0.5" />
     </joint>
     
     <joint name="joint_3" type="revolute">
-      <origin
-        xyz="0.08975 0 -0.010544"
-        rpy="-1.5708 0 -1.5708" />
-      <parent
-        link="link3" />
-      <child
-        link="link4" />
-      <axis
-        xyz="0 0 1" />
+      <origin xyz="0.08975 0 -0.010544" rpy="-${pi/2} 0 -${pi/2}" />
+      <parent link="link3" />
+      <child link="link4" />
+      <axis xyz="0 0 1" />
       <limit
-        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
+        effort="1000.0"
+        lower="-${pi/2}"
+        upper="${pi/2}"
+        velocity="0.5" />
     </joint>
     
     <joint name="joint_4" type="revolute">
-      <origin
-        xyz="0 -0.0142 0.0325"
-        rpy="1.5708 -1.5708 0" />
-      <parent
-        link="link4" />
-      <child
-        link="link5" />
-      <axis
-        xyz="0 0 1" />
+      <origin xyz="0 -0.0142 0.0325" rpy="${pi/2} -${pi/2} 0" />
+      <parent link="link4" />
+      <child link="link5" />
+      <axis xyz="0 0 1" />
       <limit
-        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
+        effort="1000.0"
+        lower="-${pi/2}"
+        upper="${pi/2}"
+        velocity="0.5" />
     </joint>
     
     <!-- joint_link5_to_out_left_grip -->
-    <joint name="gripper" type="revolute">
-      <origin
-        xyz="0.038208 0.00536837 -0.017277"
-        rpy="-1.5708 1.047 0"/>
-      <parent
-        link="link5"/>
-      <child
-        link="out_left_grip"/>
-      <axis
-         xyz="0 0 1"/>
+    <joint name="joint_gripper" type="revolute">
+      <origin xyz="0.038208 0.00536837 -0.017277" rpy="-${pi/2} 1.047 0"/>
+      <parent link="link5" />
+      <child link="out_left_grip" />
+      <axis xyz="0 0 1" />
       <limit
-        effort="1000.0" lower="-1.047" upper="0.0" velocity="0.5" />
+        effort="1000.0"
+        lower="-1.047"
+        upper="0.0"
+        velocity="0.5" />
     </joint>
 
     <joint name="joint_link5_to_out_right_grip" type="revolute">
-      <origin
-        xyz="0.038322 0.00536837 0.002815"
-        rpy="-1.5708 -1.047 0"/>
-      <parent
-        link="link5"/>
-      <child
-        link="out_right_grip"/>
-      <axis
-        xyz="0 0 -1"/>
-      <mimic
-        joint="gripper" multiplier="1.0" offset="0" />
+      <origin xyz="0.038322 0.00536837 0.002815" rpy="-${pi/2} -1.047 0"/>
+      <parent link="link5" />
+      <child link="out_right_grip" />
+      <axis xyz="0 0 -1" />
+      <xacro:unless value="${simulation}">
+        <mimic
+          joint="joint_gripper"
+          multiplier="1.0"
+          offset="0" />
+      </xacro:unless>
       <limit
-        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
+        effort="1000.0"
+        lower="-${pi/2}"
+        upper="${pi/2}"
+        velocity="0.5" />
     </joint>
     
     <joint name="joint_link5_to_in_left_grip" type="revolute">
-      <origin
-        xyz="0.059059 -0.002086 -0.013997"
-        rpy="-1.5708 1.3090 0" />
-      <parent
-        link="link5"/>
-      <child
-        link="in_left_grip"/>
-      <axis
-        xyz="0 0 1"/>
-      <mimic
-        joint="gripper" multiplier="1.2" offset="0" />
+      <origin xyz="0.059059 -0.002086 -0.013997" rpy="-${pi/2} 1.3090 0" />
+      <parent link="link5" />
+      <child link="in_left_grip" />
+      <axis xyz="0 0 1"/>
+      <xacro:unless value="${simulation}">
+        <mimic
+          joint="joint_gripper"
+          multiplier="1.2"
+          offset="0" />
+      </xacro:unless>
       <limit
-        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
+        effort="1000.0"
+        lower="-${pi/2}"
+        upper="${pi/2}"
+        velocity="0.5" />
     </joint>
     
     <joint name="joint_link5_to_in_right_grip" type="revolute">
-      <origin
-        xyz="0.059134 -0.002086 -0.000687"
-        rpy="-1.5708 -1.3090 0" />
-      <parent
-        link="link5" />
-      <child
-        link="in_right_grip" />
-      <axis
-        xyz="0 0 -1" />
-      <mimic
-        joint="gripper" multiplier="1.2" offset="0" />
+      <origin xyz="0.059134 -0.002086 -0.000687" rpy="-${pi/2} -1.3090 0" />
+      <parent link="link5" />
+      <child link="in_right_grip" />
+      <axis xyz="0 0 -1" />
+      <xacro:unless value="${simulation}">
+        <mimic
+          joint="joint_gripper"
+          multiplier="1.2"
+          offset="0" />
+      </xacro:unless>
       <limit
-        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
+        effort="1000.0"
+        lower="-${pi/2}" upper="${pi/2}" velocity="0.5" />
     </joint>
     
     <joint name="joint_out_left_grip_to_left_gripper" type="revolute">
-      <origin
-        xyz="0.0339442 0.00682491 -0.0042874"
-        rpy="0 0 -1.309" />
-      <parent
-        link="out_left_grip"/>
-      <child
-        link="left_gripper"/>
-      <axis
-        xyz="0 0 -1"/>
-      <mimic
-        joint="gripper" multiplier="1.0" offset="0" />
+      <origin xyz="0.0339442 0.00682491 -0.0042874" rpy="0 0 -1.309" />
+      <parent link="out_left_grip" />
+      <child link="left_gripper" />
+      <axis xyz="0 0 -1"/>
+      <xacro:unless value="${simulation}">
+        <mimic
+          joint="joint_gripper"
+          multiplier="1.0"
+          offset="0" />
+      </xacro:unless>
       <limit
-        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
+        effort="1000.0"
+        lower="-${pi/2}"
+        upper="${pi/2}"
+        velocity="0.5" />
     </joint>
 
     <joint name="joint_out_right_grip_to_right_gripper" type="revolute">
-      <origin
-        xyz="0.0339442 -0.00682491 -0.0030837"
-        rpy="0 0 1.309"/>
-      <parent
-        link="out_right_grip"/>
-      <child
-        link="right_gripper"/>
-      <axis
-        xyz="0 0 1"/>
-      <mimic
-        joint="gripper" multiplier="1.0" offset="0" />
+      <origin xyz="0.0339442 -0.00682491 -0.0030837" rpy="0 0 1.309" />
+      <parent link="out_right_grip" />
+      <child link="right_gripper" />
+      <axis xyz="0 0 1"/>
+      <xacro:unless value="${simulation}">
+        <mimic
+          joint="joint_gripper"
+          multiplier="1.0"
+          offset="0" />
+      </xacro:unless>
       <limit
-        effort="1000.0" lower="-1.57079632679" upper="1.57079632679" velocity="0.5" />
+        effort="1000.0"
+        lower="-${pi/2}"
+        upper="${pi/2}"
+        velocity="0.5" />
     </joint>
 
     <!-- end effector -->
-    <link name="end_effector" />
+    <link name="end_effector_link" />
     <joint name="end_effector" type="fixed">
-      <origin
-        xyz="0.105 0 -0.0075"
-        rpy="0 0 0" />
-      <parent
-        link="link5" />
-      <child
-        link="end_effector" />
+      <origin xyz="0.105 0 -0.0075" rpy="0 0 0" />
+      <parent link="link5" />
+      <child link="end_effector_link" />
     </joint>
-
   </xacro:macro>
 </robot>
